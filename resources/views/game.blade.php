@@ -1,2 +1,2 @@
-@extends('layouts.layout')
-    @livewire('game.index', ['document' => $document])
+@extends('layouts.gameLayout')
+    @livewire('game.index', ['document' => $document]) 

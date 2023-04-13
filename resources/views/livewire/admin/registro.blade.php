@@ -1,4 +1,4 @@
-<div>
+<div> 
     <form wire:submit.prevent="registrar"> 
         <div class="row gy-2">
             <div class="col-md-12">

@@ -21,7 +21,7 @@ let text;
 
     /* Formmualrios */
         let formElem;
-    /*  */
+    /*  */ 
 
 class MainScene extends Phaser.Scene {
     constructor(){
@@ -50,18 +50,13 @@ class MainScene extends Phaser.Scene {
         this.add.image(480, 250, 'header').setScale(.5);
         ruleta = this.add.sprite(900, 250, 'ruleta').setScale(.7);
         puntero = this.physics.add.sprite(900, 80, 'puntero').setScale(.45);
-        puntero.setSize(true, 100, 120);
-        
+        puntero.setSize(true, 100, 120);        
         spinButton = this.physics.add.sprite(480, 500, 'boton').setScale(.5).setInteractive();
-
         bars = this.setBars(divisiones, this);
-
         text = this.add.text(10, 50, '', { font: '16px Courier', fill: '#ffffff' });
-
         const circle = new Phaser.Geom.Circle(900, 250, 160);
         this.group = this.add.group({ key: 'rectangle', frameQuantity: 14 });
         Phaser.Actions.PlaceOnCircle(bars, circle);
-
         spinButton.on('pointerdown', function (pointer)
         { 
             game.scene.keys.gameScene.rotar()

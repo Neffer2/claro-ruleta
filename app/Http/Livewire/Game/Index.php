@@ -15,7 +15,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.game.index');
+        return view('livewire.game.index'); 
     }
 
     public function mount($document){
