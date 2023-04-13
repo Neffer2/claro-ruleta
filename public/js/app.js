@@ -9,6 +9,7 @@ let bars = [];
 let divisiones = 14;
 let premios = ['TRaje solo', 'tres trajes', 'impresora', 'camion-frente', 'repetir', 'chat', 'tres baolado', 'repetir', 'camion lado', 'camiseta', 'Mascaras', 'Gorra', 'barco?', 'engrane cabeza'];
 let rotate = false;
+let spinButton;
 
 let text;
 
@@ -37,6 +38,8 @@ class MainScene extends Phaser.Scene {
         this.load.image('puntero', './assets/puntero-ruleta1.png');
         this.load.html('formulario', './form.html');
 
+        this.load.image('boton', './assets/button.png');
+
         let rect2 = this.make.graphics().fillStyle(0xFFFFFF).fillRect(50, 50, 130, 25);
         rect2.generateTexture('rectangle', 70, 25);
     }
@@ -49,6 +52,8 @@ class MainScene extends Phaser.Scene {
         puntero = this.physics.add.sprite(900, 80, 'puntero').setScale(.45);
         puntero.setSize(true, 100, 120);
         
+        spinButton = this.physics.add.sprite(480, 500, 'boton').setScale(.5).setInteractive();
+
         bars = this.setBars(divisiones, this);
 
         text = this.add.text(10, 50, '', { font: '16px Courier', fill: '#ffffff' });
@@ -57,38 +62,11 @@ class MainScene extends Phaser.Scene {
         this.group = this.add.group({ key: 'rectangle', frameQuantity: 14 });
         Phaser.Actions.PlaceOnCircle(bars, circle);
 
-
-        /* Form */
-        // this.add.image((this.sys.game.canvas.width/2), (this.sys.game.canvas.height/2), 'fondo-3').setScale(.7);
-        //     formElem = this.add.dom((this.sys.game.canvas.width/2), (this.sys.game.canvas.height/6)).createFromCache('formulario');
-        /* --- */
+        spinButton.on('pointerdown', function (pointer)
+        { 
+            game.scene.keys.gameScene.rotar()
+        });
     }
-
-    /* Calcula los rangos de la ruleta 
-        360/14 = 25.7
-        -157.5 + 360 = 202.5 
-        360/divisiones = grados de cada division
-        grado
-
-        IDEA DESECHADA
-    */
-    // getRangos(divisiones){
-    //     let rangos = [];
-    //     let grados = 360/divisiones;
-    //     let cont;
-    //     let acumGrados = 0;
-        
-    //     cont = 0;
-    //     while(cont < divisiones){
-    //         rangos.push({
-    //             min: acumGrados,
-    //             max: (acumGrados += grados),
-    //             premio: premios[cont]
-    //         });
-    //         cont++;
-    //     }
-    //     return rangos;
-    // }
 
     /*  
         Crea un arreglo con elementos 
@@ -108,10 +86,9 @@ class MainScene extends Phaser.Scene {
             bars.push(elem);
             cont++;
         }
-        console.log(bars);
+        // console.log(bars);
         return bars;
     }
-
 
     getPremio(){
         // Hace rotar las barras al ángulo del a ruleta (RotateAroundDistance funciona con radianes)
@@ -120,13 +97,14 @@ class MainScene extends Phaser.Scene {
             El comportamiento normal del evento es ser ejecutado todo el tiempo mientrras este se cumpla.
             Con esto logro ejecutarlo solo una vez.
         */
-        bars.forEach((elem) => {
+        bars.forEach((elem) => { 
             this.physics.add.collider(elem, puntero, function(bar = elem){
-                alert(bar.premio);
+                // alert(bar.premio);
+                Livewire.emit('signalStore', bar.premio);
                 bar.disableBody(true, true);
             });
         });
-
+ 
     }
 
     rotar(){
@@ -194,7 +172,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false,
+            debug: true,
             // gravity: { y: 350 }
         }
     }
