@@ -7,7 +7,8 @@ let puntero;
 let bars = [];
 // Grados de cada división de la ruleta
 let divisiones = 14;
-let premios = ['TRaje solo', 'tres trajes', 'impresora', 'camion-frente', 'repetir', 'chat', 'tres baolado', 'repetir', 'camion lado', 'camiseta', 'Mascaras', 'Gorra', 'barco?', 'engrane cabeza'];
+// let premios = ['1', '2', '3', '4', '5'];
+let premios = ['Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'Lapiceros', 'Repetir', 'Lapiceros', 'Set Escritorios', 'Mug'];
 let rotate = false;
 let spinButton;
 
@@ -30,28 +31,30 @@ class MainScene extends Phaser.Scene {
  
     preload(){  
         this.load.image('Base', './assets/Base_1.png');
-        this.load.image('ruleta', './assets/ruleta1-circulo.png');
-        this.load.image('fondo-2', './assets/fondo-2.jpg');
+        this.load.image('ruleta', './assets/ruleta_2_Mesa_de_trabajo_1.png');
+        this.load.image('fondo-2', './assets/NEGOCIO_KV_Fonfo.png');
         this.load.image('fondo-3', './assets/Fondo-3.jpg');
-        this.load.image('header', './assets/header.png');
-        this.load.image('header', './assets/header.png');
-        this.load.image('puntero', './assets/puntero-ruleta1.png');
+        this.load.image('logo', './assets/logo_claro_empresas_01.png'); 
+        this.load.image('header', './assets/header_1.png');
+        this.load.image('puntero', './assets/puntero_mesa_de_trabajo_1.png');
         this.load.html('formulario', './form.html');
 
-        this.load.image('boton', './assets/button.png');
+        this.load.image('boton', './assets/BOTON-03.png');
 
         let rect2 = this.make.graphics().fillStyle(0xFFFFFF).fillRect(50, 50, 130, 25);
         rect2.generateTexture('rectangle', 70, 25);
     }
-  
+   
     create(){
-        this.add.image((this.sys.game.canvas.width/2), (this.sys.game.canvas.height/2), 'fondo-2').setScale(.7);
-        this.add.image(900, 450, 'Base').setScale(.7);
-        this.add.image(480, 250, 'header').setScale(.5);
+        this.add.image((this.sys.game.canvas.width/2), (this.sys.game.canvas.height/2), 'fondo-2').setScale(.675, .565);
+        this.add.image(1125, 550, 'logo');
+        // this.add.image(900, 450, 'Base').setScale(.7);
+        this.add.image(550, 300, 'header').setScale(.5);
+        this.add.image(550, 300, 'header').setScale(.5);
         ruleta = this.add.sprite(900, 250, 'ruleta').setScale(.7);
-        puntero = this.physics.add.sprite(900, 80, 'puntero').setScale(.45);
+        puntero = this.physics.add.sprite(900, 70, 'puntero').setScale(.5);
         puntero.setSize(true, 100, 120);        
-        spinButton = this.physics.add.sprite(480, 500, 'boton').setScale(.5).setInteractive();
+        spinButton = this.physics.add.sprite(900, 250, 'boton').setScale(.5).setInteractive();
         bars = this.setBars(divisiones, this);
         text = this.add.text(10, 50, '', { font: '16px Courier', fill: '#ffffff' });
         const circle = new Phaser.Geom.Circle(900, 250, 160);
@@ -94,7 +97,7 @@ class MainScene extends Phaser.Scene {
         */
         bars.forEach((elem) => { 
             this.physics.add.collider(elem, puntero, function(bar = elem){
-                // alert(bar.premio);
+                alert(bar.premio);
                 Livewire.emit('signalStore', bar.premio);
                 bar.disableBody(true, true);
             });
@@ -140,15 +143,15 @@ class MainScene extends Phaser.Scene {
                 this.getPremio();
             }
 
-            text.setText([
-                'Sprite Rotation',
-                'Angle: ' + ruleta.angle.toFixed(2),
-                'Rotation: ' + ruleta.rotation.toFixed(2)
-            ]);
+            // text.setText([
+            //     'Sprite Rotation',
+            //     'Angle: ' + ruleta.angle.toFixed(2),
+            //     'Rotation: ' + ruleta.rotation.toFixed(2)
+            // ]);
         }
     }
 }
-
+ 
 
 // Configuracion general
 const config = {
@@ -167,7 +170,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            // debug: true,
             // gravity: { y: 350 }
         }
     }
