@@ -1,5 +1,6 @@
-<div>
-    @section('game-container') 
-        <div id="game-container" class="game-container"></div>        
+<div class="">
+    @section('content') 
+        <div id="game-container"></div>         
     @endsection
 </div>
+ 

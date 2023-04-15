@@ -11,6 +11,7 @@ let divisiones = 14;
 let premios = ['Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'Lapiceros', 'Repetir', 'Lapiceros', 'Set Escritorios', 'Mug'];
 let rotate = false;
 let spinButton;
+let fireworks;
 
 let text;
 
@@ -29,7 +30,8 @@ class MainScene extends Phaser.Scene {
         super('gameScene');
     } 
  
-    preload(){  
+    preload(){
+        fireworks = document.getElementById('fireworks');
         this.load.image('Base', './assets/Base_1.png');
         this.load.image('ruleta', './assets/ruleta_2_Mesa_de_trabajo_1.png');
         this.load.image('fondo-2', './assets/NEGOCIO_KV_Fonfo.png');
@@ -37,7 +39,7 @@ class MainScene extends Phaser.Scene {
         this.load.image('logo', './assets/logo_claro_empresas_01.png'); 
         this.load.image('header', './assets/header_1.png');
         this.load.image('puntero', './assets/puntero_mesa_de_trabajo_1.png');
-        this.load.html('formulario', './form.html');
+        // this.load.html('formulario', './form.html');
 
         this.load.image('boton', './assets/BOTON-03.png');
 
@@ -47,22 +49,33 @@ class MainScene extends Phaser.Scene {
    
     create(){
         this.add.image((this.sys.game.canvas.width/2), (this.sys.game.canvas.height/2), 'fondo-2').setScale(.675, .565);
-        this.add.image(1125, 550, 'logo');
+        this.add.image(1100, 550, 'logo');
         // this.add.image(900, 450, 'Base').setScale(.7);
         this.add.image(550, 300, 'header').setScale(.5);
         this.add.image(550, 300, 'header').setScale(.5);
-        ruleta = this.add.sprite(900, 250, 'ruleta').setScale(.7);
-        puntero = this.physics.add.sprite(900, 70, 'puntero').setScale(.5);
+        ruleta = this.add.sprite(900, 280, 'ruleta').setScale(.7);
+        puntero = this.physics.add.sprite(900, 90, 'puntero').setScale(.5);
         puntero.setSize(true, 100, 120);        
-        spinButton = this.physics.add.sprite(900, 250, 'boton').setScale(.5).setInteractive();
+        spinButton = this.physics.add.sprite(900, 280, 'boton').setScale(.8).setInteractive();
         bars = this.setBars(divisiones, this);
         text = this.add.text(10, 50, '', { font: '16px Courier', fill: '#ffffff' });
         const circle = new Phaser.Geom.Circle(900, 250, 160);
         this.group = this.add.group({ key: 'rectangle', frameQuantity: 14 });
         Phaser.Actions.PlaceOnCircle(bars, circle);
+
         spinButton.on('pointerdown', function (pointer)
         { 
             game.scene.keys.gameScene.rotar()
+        });
+
+        spinButton.on('pointerover', function (pointer)
+        { 
+            spinButton.setScale(1.2);
+        });
+
+        spinButton.on('pointerout', function (pointer)
+        { 
+            spinButton.setScale(.8);
         });
     }
 
@@ -97,6 +110,7 @@ class MainScene extends Phaser.Scene {
         */
         bars.forEach((elem) => { 
             this.physics.add.collider(elem, puntero, function(bar = elem){
+                fireworks.style.visibility='visible';
                 alert(bar.premio);
                 Livewire.emit('signalStore', bar.premio);
                 bar.disableBody(true, true);
@@ -158,8 +172,8 @@ const config = {
     // Phaser.AUTO, intenta usa WebGL y si el navegador no lo tiene, usa canva.
     type: Phaser.AUTO,
     parent: 'game-container',
-    width: 1280,
-    height: 610,
+    width: 1200,
+    height: 600,
     dom: {
         createContainer: true
     },
