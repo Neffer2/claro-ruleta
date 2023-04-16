@@ -22,8 +22,8 @@ class Registro extends Component
         return view('livewire.admin.registro');
     }
  
-    public function updatedNombre(){ 
-        $this->validate([
+    public function updatedNombre(){  
+        $this->validate([ 
             'nombre' => 'required|string'
         ]);
     }
@@ -35,6 +35,20 @@ class Registro extends Component
     public function updatedEmail(){
         $this->validate(['email' => ['required', 'email', 'unique:registrados,email']]);
     }
+
+    protected $messages = [
+        'email.required' => 'Éste campo es obligatorio.',
+        'email.email' => 'Formato de correo electrónico no válido.',
+        'email.unique' => 'Ésta direccion de correo electrónico ya fué registrada.',
+
+        'documento.required' => 'Éste campo es obligatorio.',
+        'documento.numeric' => 'Éste campo debe contener únicamente números.',
+        'documento.unique' => 'Éste número de documento ya fué registrado.',
+
+        
+        'nombre.required' => 'Éste campo es obligatorio.',
+        'tel.required' => 'Éste campo es obligatorio.',
+    ];
 
     public function updatedTel(){
         $this->validate([

@@ -35,7 +35,6 @@ class MainScene extends Phaser.Scene {
         this.load.image('Base', './assets/Base_1.png');
         this.load.image('ruleta', './assets/ruleta_2_Mesa_de_trabajo_1.png');
         this.load.image('fondo-2', './assets/NEGOCIO_KV_Fonfo.png');
-        this.load.image('fondo-3', './assets/Fondo-3.jpg');
         this.load.image('logo', './assets/logo_claro_empresas_01.png'); 
         this.load.image('header', './assets/header_1.png');
         this.load.image('puntero', './assets/puntero_mesa_de_trabajo_1.png');
@@ -111,12 +110,21 @@ class MainScene extends Phaser.Scene {
         bars.forEach((elem) => { 
             this.physics.add.collider(elem, puntero, function(bar = elem){
                 fireworks.style.visibility='visible';
-                alert(bar.premio);
+                Swal.fire({
+                    title: `Felicidades! acabas de ganar un: ${bar.premio}.`,
+                    showConfirmButton: false,
+                    width: 400,
+                    imageUrl: "./assets/logo_claro_empresas_01.png",
+                    imageWidth: 150,
+                    imageHeight: 100,
+                    padding: '1em',
+                    background: "rgba(255,255,255, 1) url(./assets/fondo_registro.png) left top / cover no-repeat"
+                })
                 Livewire.emit('signalStore', bar.premio);
                 bar.disableBody(true, true);
             });
         });
- 
+  
     }
 
     rotar(){

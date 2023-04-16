@@ -15,7 +15,7 @@
                         <input type="text" id="nombre" class="form-control @error('nombre') is-invalid @elseif(strlen($nombre) > 0) is-valid @enderror" wire:model.lazy="nombre" required placeholder="NOMBRE">
                     </div>
                     @error('nombre')
-                        <div id="nombre" class="invalid-feedback">
+                        <div class="text-white bg-danger">
                             {{ $message }} 
                         </div>
                     @enderror
@@ -32,9 +32,9 @@
                         <input type="text" id="documento" class="form-control @error('documento') is-invalid @elseif(strlen($documento) > 0) is-valid @enderror" wire:model.lazy="documento" required placeholder="CEDULA">
                     </div>
                     @error('documento')
-                        <div id="documento" class="invalid-feedback">
+                        <div class="text-white bg-danger">
                             {{ $message }} 
-                        </div>
+                        </div>        
                     @enderror
                 </div>
             </div>
@@ -49,7 +49,7 @@
                         <input type="email" id="email" class="form-control @error('email') is-invalid @elseif(strlen($email) > 0) is-valid @enderror" wire:model.lazy="email" required placeholder="CORREO ELECTR&Oacute;NICO">
                     </div>
                     @error('email')
-                        <div id="email" class="invalid-feedback">
+                        <div class="text-white bg-danger">
                             {{ $message }} 
                         </div>
                     @enderror
@@ -66,7 +66,7 @@
                         <input type="text" id="tel" class="form-control @error('tel') is-invalid @elseif(strlen($tel) > 0) is-valid @enderror" wire:model.lazy="tel" required placeholder="CELULAR">
                     </div>
                     @error('tel')
-                        <div id="tel" class="invalid-feedback">
+                        <div class="text-white bg-danger">
                             {{ $message }} 
                         </div>
                     @enderror
