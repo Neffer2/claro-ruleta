@@ -12,8 +12,8 @@ let premios = ['Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'L
 let rotate = false;
 let spinButton;
 let fireworks;
-
 let text;
+let mContext;
 
     /* Velocidad */
         let velocidad = 1;
@@ -32,7 +32,6 @@ class MainScene extends Phaser.Scene {
  
     preload(){
         fireworks = document.getElementById('fireworks');
-        this.load.image('Base', './assets/Base_1.png');
         this.load.image('ruleta', './assets/ruleta_2_Mesa_de_trabajo_1.png');
         this.load.image('fondo-2', './assets/NEGOCIO_KV_Fonfo.jpg');
         this.load.image('logo', './assets/logo_claro_empresas_01.png'); 
@@ -48,7 +47,6 @@ class MainScene extends Phaser.Scene {
     create(){
         this.add.image((this.sys.game.canvas.width/2), (this.sys.game.canvas.height/2), 'fondo-2').setScale(.675, .565);
         this.add.image(1100, 550, 'logo');
-        // this.add.image(900, 450, 'Base').setScale(.7);
         this.add.image(550, 300, 'header').setScale(.5);
         this.add.image(550, 300, 'header').setScale(.5);
         ruleta = this.add.sprite(900, 280, 'ruleta').setScale(.7);
@@ -56,6 +54,7 @@ class MainScene extends Phaser.Scene {
         puntero.setSize(true, 100, 120);        
         spinButton = this.physics.add.sprite(900, 280, 'boton').setScale(.8).setInteractive();
         bars = this.setBars(divisiones, this);
+        mContext = this;
         text = this.add.text(10, 50, '', { font: '16px Courier', fill: '#ffffff' });
         const circle = new Phaser.Geom.Circle(900, 250, 160);
         this.group = this.add.group({ key: 'rectangle', frameQuantity: 14 });
@@ -63,7 +62,8 @@ class MainScene extends Phaser.Scene {
 
         spinButton.on('pointerdown', function (pointer)
         { 
-            game.scene.keys.gameScene.rotar()
+            game.scene.keys.gameScene.rotar();
+            spinButton.disableInteractive();
         });
 
         spinButton.on('pointerover', function (pointer)
@@ -107,8 +107,7 @@ class MainScene extends Phaser.Scene {
             Con esto logro ejecutarlo solo una vez.
         */
         bars.forEach((elem) => { 
-            this.physics.add.collider(elem, puntero, function(bar = elem){
-                fireworks.style.visibility='visible';
+            this.physics.add.collider(elem, puntero, function(bar = elem){  
                 Swal.fire({
                     title: `Felicidades! acabas de ganar un: ${bar.premio}.`,
                     showConfirmButton: false,
@@ -119,14 +118,15 @@ class MainScene extends Phaser.Scene {
                     padding: '1em',
                     background: "rgba(255,255,255, 1) url(./assets/fondo_registro.jpg) left top / cover no-repeat"
                 })
-                Livewire.emit('signalStore', bar.premio);
+                fireworks.style.visibility='visible';
                 bar.disableBody(true, true);
+                Livewire.emit('signalStore', bar.premio);
             });
         });
-  
     }
 
     rotar(){
+        ruleta.rotation = 0;
         velocidad = 1;
         rotate = !rotate;
         // Veolicdad aleatoria

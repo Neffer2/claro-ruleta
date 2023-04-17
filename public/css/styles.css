@@ -18,8 +18,9 @@
 
 body {
     font-family: pro-bold, Arial, Helvetica, sans-serif;
-    background-image: url('../assets/NEGOCIO_KV_Fonfo.jpg');
+    background-image: url('../assets/fondo_registro.jpg');
     background-size: cover;
+    background-position: bottom right;
 }
 
 

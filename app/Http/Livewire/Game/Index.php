@@ -14,25 +14,29 @@ class Index extends Component
     public $document;
 
     public function render()
-    {
+    { 
         return view('livewire.game.index'); 
-    }
+    } 
 
     public function mount($document){
         $this->document = $document;
         $registrado = Registrado::select('premio')->where('documento', $document)->first();
-        if (is_null($registrado->premio)){
-            // Juega
-        }else{
-            return redirect()->route('/');
-        }
+        // if (is_null($registrado->premio)){
+        //     // Juega
+        // }else{
+        //     return redirect()->route('/');
+        // }
     }
  
     public function store($premio){
-        // $registrado = Registrado::where('documento', $this->document)->first();
-        // $registrado->premio = $premio;
-        // $registrado->update();
+        if ($premio == "Repetir"){
+            return redirect()->route('game', ['document' => $this->document]);
+        }
+
+        $registrado = Registrado::where('documento', $this->document)->first();
+        $registrado->premio = $premio;
+        $registrado->update();
         
-        // return redirect()->route('/');
+        return redirect()->back();
     }
 }
