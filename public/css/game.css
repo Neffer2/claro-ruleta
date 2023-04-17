@@ -9,14 +9,23 @@ body {
     margin: 0 auto;
 }
 
-@media only screen and (max-height: 320px) {
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* @media (max-height: 300px) {
     #game-container {
         display: flex;
         align-items: center;
+    }
+
+    canvas {
+        height: 100% !important;
     }
 
     body {
         display: flex;
         justify-content: center;
     }
-}
+} */
