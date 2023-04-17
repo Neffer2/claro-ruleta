@@ -1,7 +1,7 @@
 <div class="form-container"> 
-    <div class="form-header">
+    <div class="form-header"> 
         <h2>INGRESA AQU&Iacute;</h2> 
-    </div>
+    </div> 
     <form wire:submit.prevent="registrar"> 
         <div class="row gy-4 p-4">
             <div class="col-md-12">

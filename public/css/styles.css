@@ -18,7 +18,7 @@
 
 body {
     font-family: pro-bold, Arial, Helvetica, sans-serif;
-    /* background-image: url('../assets/NEGOCIO_KV_Fonfo.png'); */
+    background-image: url('../assets/NEGOCIO_KV_Fonfo.jpg');
     background-size: cover;
 }
 
@@ -59,7 +59,7 @@ input[type="email"] {
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     padding: .5rem 5rem;
-}
+} 
 
 .btn-primary {
     background-color: #A1AFB5;
@@ -89,7 +89,7 @@ input[type="email"] {
     background-color: #FE1509 !important;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .container {
         padding: 0;
     }

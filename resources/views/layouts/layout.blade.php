@@ -12,7 +12,11 @@
 </head> 
 <body> 
     <div class="container">
-        @yield('content') 
+        <div class="row px-2">
+            <div class="col-md-12">
+                @yield('content') 
+            </div>
+        </div>
     </div>
     
     @livewireScripts
