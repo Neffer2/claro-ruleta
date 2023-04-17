@@ -88,6 +88,7 @@ input[type="email"] {
 .bg-danger {
     background-color: #FE1509 !important;
 }
+
 @media only screen and (max-width: 600px) {
     .container {
         padding: 0;
