@@ -180,7 +180,7 @@ const config = {
     // Phaser.AUTO, intenta usa WebGL y si el navegador no lo tiene, usa canva.
     type: Phaser.AUTO,
     parent: 'game-container',
-    width: 1200,
+    width: 1920,
     height: 600,
     dom: {
         createContainer: true

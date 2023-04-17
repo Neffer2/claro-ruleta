@@ -1,6 +1,6 @@
 <div class="">
     @section('content') 
-        <div id="game-container"></div>         
+        <div id="game-container"></div>          
     @endsection
 </div>
  
