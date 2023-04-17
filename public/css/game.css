@@ -10,22 +10,17 @@ body {
 }
 
 canvas {
-    width: 85% !important;
+    width: 100% !important;
     height: 100% !important;
 }
 
-/* @media (max-height: 300px) {
+@media (max-height: 414px) {
     #game-container {
-        display: flex;
-        align-items: center;
-    }
-
-    canvas {
-        height: 100% !important;
-    }
-
-    body {
         display: flex;
         justify-content: center;
     }
-} */
+
+    canvas {
+        width: 85% !important;
+    }
+}
