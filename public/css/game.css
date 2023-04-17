@@ -9,9 +9,10 @@ body {
     margin: 0 auto;
 }
 
-@media only screen and (max-height: 650px) {
+@media only screen and (max-height: 320px) {
     #game-container {
-        width: auto !important;
+        display: flex;
+        align-items: center;
     }
 
     body {
