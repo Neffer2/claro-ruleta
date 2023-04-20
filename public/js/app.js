@@ -8,7 +8,13 @@ let bars = [];
 // Grados de cada división de la ruleta
 let divisiones = 14;
 // let premios = ['1', '2', '3', '4', '5'];
-let premios = ['Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'Lapiceros', 'Set Escritorios', 'Mug', 'Botilito', 'Lapiceros', 'Repetir', 'Lapiceros', 'Set Escritorios', 'Mug'];
+let premios = [
+    'Botilito', 'Lapiceros', 'Botilito',
+    'Kit escritorio', 'Botilito', 'Lapiceros',
+    'Botilito', 'Kit escritorio', 'Botilito',
+    'Lapiceros', 'Repetir',
+    'Lapiceros', 'Botilito', 'Kit escritorio',
+];
 let rotate = false;
 let spinButton;
 let fireworks;
@@ -114,7 +120,7 @@ class MainScene extends Phaser.Scene {
                     width: 400,
                     imageUrl: "./assets/logo_claro_empresas_01.png",
                     imageWidth: 150,
-                    imageHeight: 100,
+                    imageHeight: 100, 
                     padding: '1em',
                     background: "rgba(255,255,255, 1) url(./assets/fondo_registro.jpg) left top / cover no-repeat"
                 })
