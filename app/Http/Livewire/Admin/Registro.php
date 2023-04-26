@@ -14,6 +14,7 @@ class Registro extends Component
     public $documento;
     public $email;
     public $tel;
+    public $ciudad;
 
     // Usuful vars
 
@@ -36,6 +37,11 @@ class Registro extends Component
         $this->validate(['email' => ['required', 'email', 'unique:registrados,email']]);
     }
 
+    public function updatedCiudad(){
+        $this->validate(['ciudad' => ['required', 'string']]);
+
+    }
+ 
     protected $messages = [
         'email.required' => 'Éste campo es obligatorio.',
         'email.email' => 'Formato de correo electrónico no válido.',
@@ -45,7 +51,8 @@ class Registro extends Component
         'documento.numeric' => 'Éste campo debe contener únicamente números.',
         'documento.unique' => 'Éste número de documento ya fué registrado.',
 
-        
+        'ciudad.required' => 'Éste campo es obligatorio.',
+
         'nombre.required' => 'Éste campo es obligatorio.',
         'tel.required' => 'Éste campo es obligatorio.',
     ];
@@ -60,6 +67,7 @@ class Registro extends Component
         $this->validate([
             'nombre' => 'required|string',
             'documento' => 'required|unique:registrados|numeric',
+            'ciudad' => 'required|string',
             'email' => 'required|unique:registrados|email',
             'tel' => 'required|numeric'
         ]); 
@@ -68,6 +76,7 @@ class Registro extends Component
         $registrado->name = $this->nombre;
         $registrado->email = $this->email;
         $registrado->telefono = $this->tel;
+        $registrado->ciudad = $this->ciudad;
         $registrado->documento = $this->documento;
         $registrado->save();
 

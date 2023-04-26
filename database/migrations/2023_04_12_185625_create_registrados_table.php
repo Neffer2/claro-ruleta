@@ -19,6 +19,7 @@ class CreateRegistradosTable extends Migration
             $table->string('email')->unique();
             $table->string('telefono');
             $table->string('documento')->unique();
+            $table->string('ciudad')->nullable();
             $table->string('premio')->nullable();
             $table->timestamps();
         });

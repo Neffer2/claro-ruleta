@@ -38,6 +38,13 @@ input[type="email"] {
     border-left: none;
 }
 
+select {
+    color: white !important;
+    background-color: #FE1509 !important;
+    border-color: #FE1509 !important;
+    border-left: none !important;
+}
+
 .form-container {
     background: white;
     background-image: url('../assets/header_form1.png');
