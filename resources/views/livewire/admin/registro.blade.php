@@ -131,6 +131,23 @@
                     @enderror
                 </div>
             </div>
+            <div class="col-md-12 mb-1">
+                <div class="form-group">
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-text">
+                            <span class="icon-container" id="addon-wrapping">
+                                <i class="fa-solid fa-hashtag"></i>
+                            </span>
+                        </div>
+                        <input type="text" id="id_evento" class="form-control @error('id_evento') is-invalid @elseif(strlen($id_evento) > 0) is-valid @enderror" wire:model.lazy="id_evento" required placeholder="ID EVENTO">
+                    </div>
+                    @error('id_evento')
+                        <div class="text-white bg-danger">
+                            {{ $message }} 
+                        </div>
+                    @enderror
+                </div>
+            </div>
             <div class="col-md-12 d-flex justify-content-center">
                 <button class="btn btn-primary">REGISTRAR</button>
             </div>

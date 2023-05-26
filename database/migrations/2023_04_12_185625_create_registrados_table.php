@@ -21,6 +21,7 @@ class CreateRegistradosTable extends Migration
             $table->string('documento')->unique();
             $table->string('ciudad')->nullable();
             $table->string('premio')->nullable();
+            $table->string('id_evento');
             $table->timestamps();
         });
     }

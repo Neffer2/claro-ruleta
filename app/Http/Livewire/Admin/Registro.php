@@ -13,8 +13,9 @@ class Registro extends Component
     public $nombre;
     public $documento;
     public $email;
-    public $tel;
+    public $tel; 
     public $ciudad;
+    public $id_evento;    
 
     // Usuful vars
 
@@ -41,6 +42,10 @@ class Registro extends Component
         $this->validate(['ciudad' => ['required', 'string']]);
 
     }
+
+    public function updatedIdEvento(){
+        $this->validate(['id_evento' => ['required', 'numeric']]);
+    }
  
     protected $messages = [
         'email.required' => 'Éste campo es obligatorio.',
@@ -55,6 +60,9 @@ class Registro extends Component
 
         'nombre.required' => 'Éste campo es obligatorio.',
         'tel.required' => 'Éste campo es obligatorio.',
+
+        'id_evento.required' => 'Éste campo es obligatorio.',
+        'id_evento.numeric' => 'Éste campo debe contener únicamente números.',
     ];
 
     public function updatedTel(){
@@ -69,7 +77,8 @@ class Registro extends Component
             'documento' => 'required|unique:registrados|numeric',
             'ciudad' => 'required|string',
             'email' => 'required|unique:registrados|email',
-            'tel' => 'required|numeric'
+            'tel' => 'required|numeric',
+            'id_evento' => 'required|numeric'
         ]); 
         
         $registrado = new Registrado;
@@ -78,6 +87,7 @@ class Registro extends Component
         $registrado->telefono = $this->tel;
         $registrado->ciudad = $this->ciudad;
         $registrado->documento = $this->documento;
+        $registrado->id_evento = $this->id_evento;
         $registrado->save();
 
         // Redireccionar
@@ -90,5 +100,6 @@ class Registro extends Component
         $this->documento = "";
         $this->email = "";
         $this->tel = "";
+        $this->id_evento = "";
     }
 }
