@@ -20,8 +20,10 @@ class CreateRegistradosTable extends Migration
             $table->string('telefono');
             $table->string('documento')->unique();
             $table->string('ciudad')->nullable();
+            $table->string('direccion')->nullable();
             $table->string('premio')->nullable();
             $table->string('id_evento');
+            $table->tinyInteger ('legal');
             $table->timestamps();
         });
     }

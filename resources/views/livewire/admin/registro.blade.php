@@ -132,6 +132,23 @@
                 </div>
             </div>
             <div class="col-md-12 mb-1">
+                <div class="form-group"> 
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-text">
+                            <span class="icon-container" id="addon-wrapping">
+                                <i class="fa-solid fa-location-dot" style="padding: 3px;"></i>
+                            </span>
+                        </div>
+                        <input type="text" id="direccion" class="form-control @error('direccion') is-invalid @elseif(strlen($direccion) > 0) is-valid @enderror" wire:model.lazy="direccion" required placeholder="DIRECCION">
+                    </div>
+                    @error('direccion')
+                        <div class="text-white bg-danger">
+                            {{ $message }} 
+                        </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-md-12 mb-1">
                 <div class="form-group">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-text">
@@ -146,6 +163,17 @@
                             {{ $message }} 
                         </div>
                     @enderror
+                </div>
+            </div>
+            <div class="col-md-12 mb-1">
+                <div class="form-check form-check-inline">
+                    <input id="legal" wire:model="legal" class="form-check-input @error('legal') is-invalid @elseif(strlen($legal) > 0) @enderror" type="checkbox">
+                    <label class="form-check-label" for="legal">Acepto <a href="" target="_blank">terminos y condiciones</a>.</label>
+                    @error('legal')
+                        <div class="text-white bg-danger">
+                            {{ $message }} 
+                        </div>
+                    @enderror 
                 </div>
             </div>
             <div class="col-md-12 d-flex justify-content-center">

@@ -15,6 +15,8 @@ class Registro extends Component
     public $email;
     public $tel; 
     public $ciudad;
+    public $direccion;
+    public $legal;
     public $id_evento;    
 
     // Usuful vars
@@ -46,7 +48,25 @@ class Registro extends Component
     public function updatedIdEvento(){
         $this->validate(['id_evento' => ['required', 'numeric']]);
     }
- 
+
+    public function updatedTel(){
+        $this->validate([
+            'tel' => 'required|numeric'
+        ]);
+    }
+
+    public function updatedDireccion(){
+        $this->validate([
+            'direccion' => 'required|string'
+        ]);
+    }
+
+    public function updatedLegal(){
+        $this->validate([
+            'legal' => 'required'
+        ]);
+    }
+
     protected $messages = [
         'email.required' => 'Éste campo es obligatorio.',
         'email.email' => 'Formato de correo electrónico no válido.',
@@ -63,13 +83,11 @@ class Registro extends Component
 
         'id_evento.required' => 'Éste campo es obligatorio.',
         'id_evento.numeric' => 'Éste campo debe contener únicamente números.',
-    ];
 
-    public function updatedTel(){
-        $this->validate([
-            'tel' => 'required|numeric'
-        ]);
-    } 
+        'direccion.required' => 'Éste campo es obligatorio.',
+
+        'legal.required' => 'Éste campo es obligatorio.'
+    ];
 
     public function registrar(){
         $this->validate([
@@ -78,7 +96,9 @@ class Registro extends Component
             'ciudad' => 'required|string',
             'email' => 'required|unique:registrados|email',
             'tel' => 'required|numeric',
-            'id_evento' => 'required|numeric'
+            'direccion' => 'required|string',
+            'id_evento' => 'required|numeric', 
+            'legal' => 'required'
         ]); 
         
         $registrado = new Registrado;
@@ -87,6 +107,8 @@ class Registro extends Component
         $registrado->telefono = $this->tel;
         $registrado->ciudad = $this->ciudad;
         $registrado->documento = $this->documento;
+        $registrado->direccion = $this->direccion;
+        $registrado->legal = $this->legal;
         $registrado->id_evento = $this->id_evento;
         $registrado->save();
 
