@@ -153,7 +153,7 @@
                     <div class="input-group flex-nowrap">
                         <div class="input-group-text">
                             <span class="icon-container" id="addon-wrapping">
-                                <i class="fa-solid fa-hashtag"></i>
+                                <i class="fa-solid fa-hashtag" style="padding: 2px;"></i>
                             </span>
                         </div>
                         <input type="text" id="id_evento" class="form-control @error('id_evento') is-invalid @elseif(strlen($id_evento) > 0) is-valid @enderror" wire:model.lazy="id_evento" required placeholder="ID EVENTO">
@@ -167,8 +167,8 @@
             </div>
             <div class="col-md-12 mb-1">
                 <div class="form-check form-check-inline">
-                    <input id="legal" wire:model="legal" class="form-check-input @error('legal') is-invalid @elseif(strlen($legal) > 0) @enderror" type="checkbox">
-                    <label class="form-check-label" for="legal">Acepto <a href="" target="_blank">terminos y condiciones</a>.</label>
+                    <input id="legal" wire:model="legal" class="form-check-input @error('legal') is-invalid @elseif(strlen($legal) > 0) @enderror" type="checkbox" required>
+                    <label class="form-check-label" for="legal">He le&iacute;do y acepto los <a href="https://claroleads.com/wp-content/uploads/2023/06/TERMINOS-Y-CONDICIONES-Y-POLITICA-DE-TRATAMIENTO-DE-DATOS-CLARO.pdf" target="_blank">t&eacute;rminos y condiciones</a> y la <a href="https://claroleads.com/wp-content/uploads/2023/06/TERMINOS-Y-CONDICIONES-Y-POLITICA-DE-TRATAMIENTO-DE-DATOS-CLARO.pdf" target="_blank">pol&iacute;tica de tratamiento de datos</a>.</label>
                     @error('legal')
                         <div class="text-white bg-danger">
                             {{ $message }} 
