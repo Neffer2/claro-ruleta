@@ -61,14 +61,14 @@
                         <div class="input-group-text">
                             <span class="icon-container" id="addon-wrapping">
                                 <i class="fa-solid fa-city"></i>
-                            </span>
+                            </span> 
                         </div>
                         <select id="ciudad" class="form-control @error('ciudad') is-invalid @elseif(strlen($ciudad) > 0) is-valid @enderror" wire:model.lazy="ciudad" required placeholder="CIUDAD">
                             <option value="">CIUDAD</option>
                             <option value="BOGOT&Aacute; D.C">BOGOT&Aacute; D.C.</option>
                             <option value="MEDELL&Iacute;N">MEDELL&Iacute;N</option>
                             <option value="CALI">CALI</option>
-                            <option value="BARRANQUILLA">BARRANQUILLA</option>
+                            <option value="BARRANQUILLA">BARRANQUILLA< /option>
                             <option value="CARTAGENA">CARTAGENA</option>
                             <option value="SOLEDAD">SOLEDAD</option>
                             <option value="C&Uacute;CUTA">C&Uacute;CUTA</option>
