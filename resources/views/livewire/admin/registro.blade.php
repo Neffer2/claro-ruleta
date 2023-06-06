@@ -68,7 +68,7 @@
                             <option value="BOGOT&Aacute; D.C">BOGOT&Aacute; D.C.</option>
                             <option value="MEDELL&Iacute;N">MEDELL&Iacute;N</option>
                             <option value="CALI">CALI</option>
-                            <option value="BARRANQUILLA">BARRANQUILLA< /option>
+                            <option value="BARRANQUILLA">BARRANQUILLA</option>
                             <option value="CARTAGENA">CARTAGENA</option>
                             <option value="SOLEDAD">SOLEDAD</option>
                             <option value="C&Uacute;CUTA">C&Uacute;CUTA</option>
@@ -105,6 +105,18 @@
                             <option value="MAICAO">MAICAO</option>
                             <option value="PIEDECUESTA">PIEDECUESTA</option>
                             <option value="YOPAL">YOPAL</option>
+                            <option value="CAREPA">CAREPA</option>
+                            <option value="CHIGORODO">CHIGOROD&Oacute;</option>
+                            <option value="TENJO">TENJO</option>
+                            <option value="VILLETA">VILLETA</option>
+                            <option value="BUGA">BUGA</option>
+                            <option value="YUMBO">YUMBO</option>
+                            <option value="ARMENIA">ARMENIA</option>
+                            <option value="CARTAGO">CARTAGO</option>
+                            <option value="SANTA-ROSA-DE-CABAL">SANTA ROSA DE CABAL</option>
+                            <option value="RIONEGRO">RIONEGRO</option>
+                            <option value="IPIALES">IPIALES</option>
+                            <option value="POPAYAN">POPAYAN</option>
                         </select>
                     </div>
                     @error('ciudad')
