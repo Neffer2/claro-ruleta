@@ -116,7 +116,7 @@
                             <option value="SANTA-ROSA-DE-CABAL">SANTA ROSA DE CABAL</option>
                             <option value="RIONEGRO">RIONEGRO</option>
                             <option value="IPIALES">IPIALES</option>
-                            <option value="POPAYAN">POPAYAN</option>
+                            <option value="VILLA-DE-LEYVA">VILLA DE LEYVA</option>
                         </select>
                     </div>
                     @error('ciudad')
