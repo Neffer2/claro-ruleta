@@ -67,9 +67,16 @@ class MainScene extends Phaser.Scene {
         Phaser.Actions.PlaceOnCircle(bars, circle);
 
         spinButton.on('pointerdown', function (pointer)
-        { 
-            game.scene.keys.gameScene.rotar();
-            spinButton.disableInteractive();
+        {   
+            if (!rotate){
+                game.scene.keys.gameScene.rotarConstante();
+            }else {
+                game.scene.keys.gameScene.detener();
+                spinButton.disableInteractive();        
+            }
+
+            // game.scene.keys.gameScene.rotar();
+            // spinButton.disableInteractive();
         });
 
         spinButton.on('pointerover', function (pointer)
@@ -100,7 +107,7 @@ class MainScene extends Phaser.Scene {
             elem.visible = false;
             bars.push(elem);
             cont++;
-        }
+        } 
         // console.log(bars);
         return bars;
     }
@@ -139,36 +146,63 @@ class MainScene extends Phaser.Scene {
         limite = this.getRndInteger(15, 30);
     }
 
+    // Rotar cosntante (cambios claro)
+    rotarConstante(){
+        ruleta.rotation = 0;
+        velocidad = 4;
+        rotate = !rotate;
+        // Veolicdad aleatoria
+        limite = 1000;
+    }
+
+    detener(){
+        rotate = !rotate;
+        puntero.setAngle(0);
+        this.getPremio();
+    }
+
     getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
     
     update(){
+        // if (rotate){
+        //     /*
+        //         Aumenta la velocidada cada PASO.
+        //         Hasta el límmite. 
+        //         Luego resta la velocidad hasta cero.
+        //      */
+        //     if (valocity_handler && velocidad > limite){
+        //         valocity_handler = !valocity_handler;
+        //     }
+
+        //     if (valocity_handler && !(velocidad == 0)){
+        //         velocidad += 1;
+        //     }
+
+        //     if (!valocity_handler && !(velocidad <= 0)){
+        //         velocidad -= .1;
+        //     }
+        //     ruleta.angle += velocidad;
+
+        //     if (velocidad < 0){
+        //         rotate = !rotate;
+        //         valocity_handler = !valocity_handler;
+        //         puntero.setAngle(0);
+        //         this.getPremio();
+        //     }
+
+        //     // text.setText([
+        //     //     'Sprite Rotation',
+        //     //     'Angle: ' + ruleta.angle.toFixed(2),
+        //     //     'Rotation: ' + ruleta.rotation.toFixed(2)
+        //     // ]);
+        // }
+
+        /* Rotacion constante */
         if (rotate){
-            /*
-                Aumenta la velocidada cada PASO.
-                Hasta el límmite. 
-                Luego resta la velocidad hasta cero.
-             */
-            if (valocity_handler && velocidad > limite){
-                valocity_handler = !valocity_handler;
-            }
-
-            if (valocity_handler && !(velocidad == 0)){
-                velocidad += 1;
-            }
-
-            if (!valocity_handler && !(velocidad <= 0)){
-                velocidad -= .1;
-            }
+            
             ruleta.angle += velocidad;
-
-            if (velocidad < 0){
-                rotate = !rotate;
-                valocity_handler = !valocity_handler;
-                puntero.setAngle(0);
-                this.getPremio();
-            }
 
             // text.setText([
             //     'Sprite Rotation',
